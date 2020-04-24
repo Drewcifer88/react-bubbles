@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const emtpyCredentials = {
+const emptyCredentials = {
   username: '',
   password: '',
-}
+};
 
 const Login = () => {
   const history = useHistory();
@@ -17,19 +17,20 @@ const Login = () => {
       [event.target.name]: event.target.value,
     });
   };
+
   const handleSubmit = event => {
     event.preventDefault();
     axiosWithAuth()
       .post('/api/login', credentials)
       .then(res => {
         console.log(res);
-        localStorage.setItem('token', JSON.stringify(res.data.payload))
-        history.pushState('/protected')
+        localStorage.setItem('token', JSON.stringify(res.data.payload));
+        history.push('/protected');
       })
-      .catch(err => console.log(error.response));
+      .catch(err => console.log(err.response));
   };
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
+
+
   return (
     <>
       <h1>Welcome to the Bubble App!</h1>
@@ -38,16 +39,12 @@ const Login = () => {
           <input
             type="text"
             name="username"
-            placeholder="Name"
-            maxLength="20"
             value={credentials.username}
             onChange={handleChange}
           />
           <input
             type="password"
             name="password"
-            placeholder="password"
-            maxLength="20"
             value={credentials.password}
             onChange={handleChange}
           />
