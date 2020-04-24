@@ -94,37 +94,6 @@ const ColorList = ({ colors, props, updateColors, getData }) => {
         </form>
       )}
       <div className="spacer" />
-
-
-      {/* stretch - build another form here to add a color */}
-      {/* <form onSubmit={addColor()}>
-          <legend>add color</legend>
-          <label>
-            color name:
-            <input
-              onChange={e =>
-                setColorToAdd({ ...colorToAdd, color: e.target.value })
-              }
-              value={colorToAdd.color}
-            />
-          </label>
-          <label>
-            hex code:
-            <input
-              onChange={e =>
-                setColorToAdd({
-                  ...colorToAdd,
-                  code: { hex: e.target.value }
-                })
-              }
-              value={colorToAdd.code.hex}
-            />
-          </label>
-          <div className="button-row">
-            <button type="submit">save</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
-          </div>
-        </form> */}
     </div>
   );
 };
